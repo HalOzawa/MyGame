@@ -3,17 +3,17 @@
 #include "Direct3D.h"
 #include "Quad.h"
 #include "Camera.h"
-//#include "Sprite.h"
 #include "Input.h"
 #include "Transform.h"
 #include "Fbx.h"
-//#include "Dice.h"
 #include"Controller.h"
 #include"Stage.h"
+#include "RootJob.h"
 #include"resource.h"
 
 Stage* pStage;
 Controller* control;
+RootJob* pRootJob;
 
 using namespace Direct3D;
 
@@ -72,8 +72,11 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
     HRESULT hr = Direct3D::Initialize(winW, winH, hWnd);
 
     Input::Initialize(hWnd);
+    //カメラの初期化
     Camera::Initialize();
 
+    pRootJob = new RootJob(nullptr);
+	pRootJob->Initialize();
     pStage = new Stage;
     pStage->Initialize();
     control = new Controller;
@@ -102,6 +105,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
             //カメラを更新
             Camera::Update();
             //ゲームの処理
+			pRootJob->UpdateSub();
             pStage->Update();
             control->Update();
 
@@ -122,6 +126,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
 
             Direct3D::BeginDraw();
             Input::Update();
+			pRootJob->DrawSub();
             pStage->Draw();
             Direct3D::EndDraw();
         }
@@ -132,6 +137,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
     SAFE_DELETE(control);
 
     Input::Release();
+	pRootJob->ReleaseSub();
     Direct3D::Release();
 
     return 0;

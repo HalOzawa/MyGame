@@ -18,7 +18,7 @@ void Player::Initialize()
 	this->transform_.scale_.x = 0.5;
 	this->transform_.scale_.y = 0.5;
 	this->transform_.scale_.z = 0.5;
-	this->transform_.position_.y = 1;
+	//this->transform_.position_.y = 1;
 }
 
 void Player::Update()
@@ -36,7 +36,7 @@ void Player::Update()
 	{
 		transform_.position_.x -= 1;
 	}
-	if (Input::IsKeyDown(DIK_W))
+	if (Input::IsKeyDown(DIK_D))
 	{
 		transform_.position_.x += 1;
 	}

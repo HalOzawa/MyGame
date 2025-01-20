@@ -148,7 +148,10 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Quad.cpp" />
+    <ClCompile Include="RootJob.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SphereCollider.cpp" />
     <ClCompile Include="Sprirte.cpp" />
     <ClCompile Include="Stage.cpp" />
@@ -166,8 +169,11 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Quad.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="RootJob.h" />
+    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SphereCollider.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Stage.h" />

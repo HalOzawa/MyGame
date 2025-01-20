@@ -10,6 +10,7 @@ Controller::Controller()
 
 Controller::~Controller()
 {
+
 }
 
 void Controller::Initialize()
