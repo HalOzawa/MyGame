@@ -17,8 +17,8 @@ class Stage
     int width;
     int height;
 
-    void Save();
-    void Open();
+    //void Save();
+    //void Open();
 public:
     int selectMode;
     int selectType;
@@ -42,6 +42,5 @@ public:
     void Release();
 
     LRESULT WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
-    BOOL DialogProc(HWND hDlg, UINT msg, WPARAM wp, LPARAM lp);
 };
 
