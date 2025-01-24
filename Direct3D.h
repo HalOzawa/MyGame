@@ -16,9 +16,6 @@ enum SHADER_TYPE
 #define SAFE_RELEASE(p) if(p != nullptr){ p->Release(); p = nullptr;}
 namespace Direct3D
 {
-	extern ID3D11Device* pDevice;
-	extern ID3D11DeviceContext* pContext;
-	//?ÅÒ??ÅÒ?
 	HRESULT Initialize(int winW, int winH, HWND hWnd);
 
 	HRESULT InitShader();

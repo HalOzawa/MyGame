@@ -24,7 +24,6 @@ const int WINDOW_HEIGHT = 600; //ウィンドウの高さ
 
 //プロトタイプ宣言
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
-BOOL CALLBACK DialogProc(HWND hDlg, UINT msg, WPARAM wp, LPARAM lp);
 
 //エントリーポイント
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, int nCmdShow)
@@ -66,8 +65,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
 
     ShowWindow(hWnd, nCmdShow);
 
-    HWND hDlg = CreateDialog(hInstance, MAKEINTRESOURCE(IDD_DIALOG1), hWnd, (DLGPROC)DialogProc);
-
     //Direct3D初期化
     HRESULT hr = Direct3D::Initialize(winW, winH, hWnd);
 
@@ -76,7 +73,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
     Camera::Initialize();
 
     pRootJob = new RootJob(nullptr);
-	pRootJob->Initialize();
+    pRootJob->Initialize();
     pStage = new Stage;
     pStage->Initialize();
     control = new Controller;
@@ -105,7 +102,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
             //カメラを更新
             Camera::Update();
             //ゲームの処理
-			pRootJob->UpdateSub();
+            pRootJob->UpdateSub();
             pStage->Update();
             control->Update();
 
@@ -126,7 +123,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
 
             Direct3D::BeginDraw();
             Input::Update();
-			pRootJob->DrawSub();
+            pRootJob->DrawSub();
             pStage->Draw();
             Direct3D::EndDraw();
         }
@@ -137,7 +134,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
     SAFE_DELETE(control);
 
     Input::Release();
-	pRootJob->ReleaseSub();
+    pRootJob->ReleaseSub();
     Direct3D::Release();
 
     return 0;
@@ -146,11 +143,14 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
 //ウィンドウプロシージャ（何かあった時によばれる関数）
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-    return pStage->WndProc(hWnd, msg, wParam, lParam);//偽物のwindowプロシージャ
-}
-
-//ダイアログプロシージャ
-BOOL CALLBACK DialogProc(HWND hDlg, UINT msg, WPARAM wp, LPARAM lp)
-{
-    return pStage->DialogProc(hDlg, msg, wp, lp);//偽物のプロシージャ
+    switch (msg)
+    {
+    case WM_DESTROY:
+        PostQuitMessage(0);  //プログラム終了
+        return 0;
+    case WM_MOUSEMOVE:
+        Input::SetMousePosition(LOWORD(lParam), HIWORD(lParam));
+        return 0;
+    }
+    return DefWindowProc(hWnd, msg, wParam, lParam);
 }
