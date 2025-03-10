@@ -136,6 +136,27 @@ void Stage::Draw()
 			}
 		}
 	}
+	table[4][11] = { 3, 0 };
+	table[5][11] = { 3, 0 };
+	table[6][11] = { 3, 0 };
+	table[4][10] = { 3, 0 };
+	table[5][10] = { 3, 0 };
+	table[6][10] = { 3, 0 };
+	table[5][8] = { 3, 0 };
+	table[1][2] = { 2, 0 };
+	table[2][2] = { 2, 0 };
+	table[1][3] = { 3, 0 };
+	table[2][3] = { 3, 0 };
+	table[3][3] = { 3, 0 };
+	table[4][3] = { 3, 0 };
+	table[5][3] = { 3, 0 };
+	table[7][3] = { 3, 0 };
+	table[9][3] = { 3, 0 };
+	table[10][3] = { 3, 0 };
+	table[11][3] = { 3, 0 };
+	table[9][4] = { 3, 0 };
+	table[10][4] = { 3, 0 };
+	table[11][4] = { 3, 0 };
 
 }
 
@@ -147,19 +168,3 @@ void Stage::Release()
 		SAFE_DELETE(pFbx[i]);
 	}
 }
-
-//ウィンドウプロシージャ（何かあった時によばれる関数）
-//UINT typedef 別名 unsigned 符号なし　int 
-//LRESULT Stage::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
-//{
-//	switch (msg)
-//	{
-//	case WM_DESTROY:
-//		PostQuitMessage(0);  //プログラム終了
-//		return 0;
-//	case WM_MOUSEMOVE:
-//		Input::SetMousePosition(LOWORD(lParam), HIWORD(lParam));
-//		return 0;
-//	}
-//	return DefWindowProc(hWnd, msg, wParam, lParam);
-//}

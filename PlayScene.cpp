@@ -3,7 +3,7 @@
 #include "Stage.h"
 #include "Player.h"
 
-//Stage* pStage;
+Stage* pStage;
 
 PlayScene::PlayScene(GameObject* parent)
 {
@@ -11,22 +11,23 @@ PlayScene::PlayScene(GameObject* parent)
 
 void PlayScene::Initialize()
 {
-	//pStage->Initialize();
+	pStage = new Stage;
+	pStage->Initialize();
 	Instantiate<Player>(this);
 	//Instantiate<Enemy>(this);
 }
 
 void PlayScene::Update()
 {
-	//pStage->Update();
+	pStage->Update();
 }
 
 void PlayScene::Draw()
 {
-	//pStage->Draw();
+	pStage->Draw();
 }
 
 void PlayScene::Release()
 {
-	//pStage->Release();
+	pStage->Release();
 }

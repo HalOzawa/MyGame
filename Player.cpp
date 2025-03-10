@@ -24,21 +24,22 @@ void Player::Initialize()
 void Player::Update()
 {
 	//transform_.rotate_.y += 1;
+	float speed = 1.0f;
 	if (Input::IsKeyDown(DIK_W))
 	{
-		transform_.position_.z += 1;
+		transform_.position_.z += speed;
 	}
 	if (Input::IsKeyDown(DIK_S))
 	{
-		transform_.position_.z -= 1;
+		transform_.position_.z -= speed;
 	}
 	if (Input::IsKeyDown(DIK_A))
 	{
-		transform_.position_.x -= 1;
+		transform_.position_.x -= speed;
 	}
 	if (Input::IsKeyDown(DIK_D))
 	{
-		transform_.position_.x += 1;
+		transform_.position_.x += speed;
 	}
 }
 

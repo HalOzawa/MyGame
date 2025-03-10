@@ -7,11 +7,11 @@
 #include "Transform.h"
 #include "Fbx.h"
 #include"Controller.h"
-#include"Stage.h"
+//#include"Stage.h"
 #include "RootJob.h"
 #include"resource.h"
 
-Stage* pStage;
+//Stage* pStage;
 Controller* control;
 RootJob* pRootJob;
 
@@ -74,8 +74,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
 
     pRootJob = new RootJob(nullptr);
     pRootJob->Initialize();
-    pStage = new Stage;
-    pStage->Initialize();
+    //pStage = new Stage;
+    //pStage->Initialize();
     control = new Controller;
     control->Initialize();
 
@@ -103,7 +103,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
             Camera::Update();
             //ƒQ[ƒ€‚Ìˆ—
             pRootJob->UpdateSub();
-            pStage->Update();
+            //pStage->Update();
             control->Update();
 
             if (Input::IsKeyDown(DIK_ESCAPE))
@@ -124,13 +124,13 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
             Direct3D::BeginDraw();
             Input::Update();
             pRootJob->DrawSub();
-            pStage->Draw();
+            //pStage->Draw();
             Direct3D::EndDraw();
         }
     }
     //SAFE_DELETE(q);
-    pStage->Release();
-    SAFE_DELETE(pStage);
+    //pStage->Release();
+    //SAFE_DELETE(pStage);
     SAFE_DELETE(control);
 
     Input::Release();
