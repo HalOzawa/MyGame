@@ -7,7 +7,8 @@ class Player :
 	public GameObject
 {
     int hModel_;
-
+	XMVECTOR front_;
+	float speed_ = 0.1f;
 public:
     //コンストラクタ
     Player(GameObject* parent);
